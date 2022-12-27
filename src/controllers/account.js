@@ -12,6 +12,9 @@ exports.getAllAccounts = async (req, res) => {
             },
             attributes: {
                 exclude: ['password', 'createdAt', 'updatedAt']
+            },
+            where: {
+                role: 'user'
             }
         })
 
