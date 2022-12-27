@@ -55,7 +55,6 @@ exports.checkout = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
@@ -106,7 +105,6 @@ exports.getAllOrders = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
@@ -148,7 +146,6 @@ exports.getOrderDetail = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
@@ -158,14 +155,11 @@ exports.payOrder = async (req, res) => {
         const { id } = req.params
 
         const file = parser.format(path.extname(req.files.transfer_proof.name).toString(), req.files.transfer_proof.data).content
-        console.log('aaa');
         const result = await cloudinary.uploader.upload(file, {
             folder: 'uploads',
             use_filename: true,
             unique_filename: false
         })
-        console.log('bbb');
-
 
         await order.update({
             transfer_proof: result.secure_url,

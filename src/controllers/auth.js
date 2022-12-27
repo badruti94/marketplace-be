@@ -19,8 +19,6 @@ exports.register = async (req, res) => {
         })
     }
     try {
-        console.log('1111');
-
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(req.body.password, salt)
 
@@ -28,20 +26,6 @@ exports.register = async (req, res) => {
             username: req.body.username,
             password: hashPassword,
         })
-
-        const usersData = await user.bulkCreate([
-            {
-                username: 'tesss1',
-                password: hashPassword,
-            },
-            {
-                username: 'tesss2',
-                password: hashPassword,
-            },
-        ])
-
-        const tesssar = ['a','b']
-        console.log(tesssar.map((tes, i) => ({...tes, i})))
 
         await profile.create({
             ...req.body,
@@ -55,7 +39,6 @@ exports.register = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            ms: error.message
         })
     }
 }

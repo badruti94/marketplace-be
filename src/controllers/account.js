@@ -23,7 +23,6 @@ exports.getAllAccounts = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
@@ -50,7 +49,6 @@ exports.getAccountById = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
@@ -94,7 +92,6 @@ exports.createAccount = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
@@ -151,7 +148,6 @@ exports.updateAccount = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
@@ -180,7 +176,6 @@ exports.deleteAccount = async (req, res) => {
     } catch (error) {
         res.status(500).send({
             message: 'Internal Server Error',
-            msg: error.message
         })
     }
 }
